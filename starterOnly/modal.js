@@ -51,7 +51,7 @@ function lastValidation() {
 
 // validate email address
 function emailValidation() {
-  let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
+  let regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   let inputValue = document.getElementById("email").value;
   if(inputValue != true) {
     alert("Veuillez indiquer une adresse email valide");
@@ -62,7 +62,7 @@ function emailValidation() {
 
 // validate birthdate
 function birthdateValidation() {
-  let regex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+  let regex = (((0[1-9]|[12][0-9]|3[01])([/])(0[13578]|10|12)([/])(\d{4}))|(([0][1-9]|[12][0-9]|30)([/])(0[469]|11)([/])(\d{4}))|((0[1-9]|1[0-9]|2[0-8])([/])(02)([/])(\d{4}))|((29)(\/)(02)([/])([02468][048]00))|((29)([/])(02)([/])([13579][26]00))|((29)([/])(02)([/])([0-9][0-9][0][48]))|((29)([/])(02)([/])([0-9][0-9][2468][048]))|((29)([/])(02)([/])([0-9][0-9][13579][26])));
   let inputValue = document.getElementById("birthdate").value;
   if (inputValue != true) {
     alert("Veuillez indiquer une date de naissance valide");
