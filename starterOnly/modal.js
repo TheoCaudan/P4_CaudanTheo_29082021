@@ -100,7 +100,7 @@ function locationsValidation() {
 }
 
 // validate form
-formData.addEventListener("submit", e => {
+form.addEventListener("submit", e => {
   e.preventDefault();
 })
 
