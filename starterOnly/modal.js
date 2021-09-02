@@ -75,9 +75,9 @@ function birthdateValidation() {
     return false;
   }
 // set the leap years case
-  var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+  var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-  if(year % 400 || (year % 100 != 0 && year % 4 == 0)) {
+  if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)) {
     monthLength[1] = 29;
   }
 // check the range of day
