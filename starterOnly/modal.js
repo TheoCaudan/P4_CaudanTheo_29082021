@@ -11,7 +11,25 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const form = document.querySelector("form");
+const firstNameInput = document.getElementById("first"),
+      lastNameInput = document.getElementById("last"),
+      emailInput = document.getElementById("email"),
+      birthdateInput = document.getElementById("birthdate"),
+      quantityInput = document.getElementById("quantity"),
+      locationsInput = document.querySelectorAll(".checkbox-input[type=radio]"),
+      checkbox1Input = document.getElementById("checkbox1");
 
+// errorMessages
+const errorMessages = {
+  firstName: "Veuillez renseigner un prénom comportant au moins 2 caractères.",
+  lastName: "Veuillez renseigner un nom comportant au moins 2 caractères.",
+  email: "Veuillez renseigner une adresse email valide.",
+  birthdate: "Veuillez renseigner une date de naissance au format JJ/MM/AAAA.",
+  quantity: "Veuillez renseigner un nombre valide (supérieur ou égal à zéro).",
+  locations: "Veuillez choisir une ville.",
+  checkbox1: "Veuillez cocher la case \"J'ai lu et accepté les conditions d'utilisation.\"."
+};
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -110,7 +128,6 @@ function locationsValidation() {
 }
 
 //validate checkbox1
-
 function checkbox1Validation() {
   let inputValue = document.getElementById("checkbox1").checked;
   if(inputValue.checked != true) {
@@ -119,16 +136,61 @@ function checkbox1Validation() {
     return true;
   }
 }
+// remove alerts from the past
+function removeAlerts() {
+  let alertBoxes = document.getElementsByClassName("form-alert");
+  if(alertBoxes.length > 0) {
+    for(let alert in alertBoxes) {
+      alert.remove();
+    }
+  }
+}
+// invalid alert
+function isInvalid(element, message) {
+  let invalidAlert = document.createElement("div");
+  invalidAlert.classList.add("form-alert");
+  let br = document.createElement("br");
+  invalidAlert.innerHTML = message;
+  if(element !== locations) {
+    element.parentElement.append(invalidAlert);
+    element.parentElement.append(br);
+  } else {
+    element[0].parentElement.append(invalidAlert);
+    element[0].parentElement.append(br);
+  }
+}
 
 // validate form
 form.addEventListener("submit", e => {
   e.preventDefault();
 })
 
-function validation() {
-  if(firstValidation() != true || lastValidation() != true || emailValidation() != true || birthdateValidation() != true || quantityValidation() != true || locationsValidation() != true || checkbox1Validation() != true) {
-    return false;
-  } else {
-    return true;
+function validation(event) {
+  event.preventDefault();
+  let isValid = true;
+  removeAlerts();
+  if(firstValidation() != true) {
+    isValid = false;
+    isInvalid(firstNameInput, errorMessages.firstName);
+  } if(lastValidation() != true) {
+    isValid = false;
+    isInvalid(lastNameInput, errorMessages.lastName);
+  } if(emailValidation() != true) {
+    isValid = false;
+    isInvalid(emailInput, errorMessages.email);
+  } if(birthdateValidation() != true) {
+    isValid = false;
+    isInvalid(birthdateInput, errorMessages.birthdate);
+  } if(quantityValidation() != true) {
+    isValid = false;
+    isInvalid(quantityInput, errorMessages.quantity);
+  } if(locationsValidation() != true) {
+    isValid = false;
+    isInvalid(locationsInput, errorMessages.locations);
+  } if(checkbox1Validation() != true) {
+    isValid = false;
+    isInvalid(checkbox1Input, errorMessages.checkbox1);
+  } if(isValid == true) {
+    form.submit();
   }
 }
