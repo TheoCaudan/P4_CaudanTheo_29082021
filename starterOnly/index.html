@@ -66,11 +66,10 @@
                 <label>Prénom</label><br>
                 <input
                   class="text-control"
-                  type="text"
+                  type="text" required
                   id="first"
                   name="first"
                   minlength="2"
-                  required
                 /><br>
               </div>
               <div
@@ -78,10 +77,9 @@
                 <label>Nom</label><br>
                 <input
                   class="text-control"
-                  type="text"
+                  type="text" required
                   id="last"
                   name="last"
-                  required
                 /><br>
               </div>
               <div
@@ -89,10 +87,9 @@
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="email" required
                   id="email"
                   name="email"
-                  required
                 /><br>
               </div>
               <div
@@ -100,23 +97,21 @@
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
-                  type="date"
+                  type="date" required
                   id="birthdate"
                   name="birthdate"
-                  required
                 /><br>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input 
-                  type="number" 
+                  type="number" required
                   class="text-control" 
                   id="quantity" 
                   name="quantity" 
                   min="0" 
                   max="99"
-                  required
                   />
               </div>
               <p class="text-label">Quelles villes ?</p>
@@ -193,9 +188,8 @@
                 class="formData">
                 <input
                   class="checkbox-input"
-                  type="checkbox"
+                  type="checkbox" required
                   id="checkbox1"
-                  required
                 />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
@@ -204,9 +198,8 @@
                 <br>
                 <input 
                   class="checkbox-input" 
-                  type="checkbox" 
+                  type="checkbox" disabled
                   id="checkbox2" 
-                  disabled
                 />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

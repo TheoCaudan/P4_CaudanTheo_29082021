@@ -136,15 +136,6 @@ function checkbox1Validation() {
     return true;
   }
 }
-// remove alerts from the past
-function removeAlerts() {
-  let alertBoxes = document.getElementsByClassName("form-alert");
-  if(alertBoxes.length > 0) {
-    for(let alert in alertBoxes) {
-      alert.remove();
-    }
-  }
-}
 // invalid alert
 function isInvalid(element, message) {
   let invalidAlert = document.createElement("div");
@@ -159,10 +150,18 @@ function isInvalid(element, message) {
     element[0].parentElement.append(br);
   }
 }
-
+// remove alerts from the past
+function removeAlerts() {
+  let alertBoxes = document.getElementsByClassName("form-alert");
+  if(alertBoxes.length > 0) {
+    for(let alert in alertBoxes) {
+      alert.remove();
+    }
+  }
+}
 // validate form
-form.addEventListener("submit", e => {
-  e.preventDefault();
+form.addEventListener("submit", event => {
+  event.preventDefault();
 })
 
 function validation(event) {
