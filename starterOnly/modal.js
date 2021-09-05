@@ -117,7 +117,7 @@ function birthdateValidation() {
 // validate quantity
 function quantityValidation() {
   let inputValue = document.getElementById("quantity");
-  if(inputValue.value >= 0 && inputValue.type == "number") {
+  if(inputValue.value >= 0 && inputValue.type == "number" && inputValue.value < 100) {
     return true;
   } else {
     return false;
