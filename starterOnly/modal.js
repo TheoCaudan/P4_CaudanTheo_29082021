@@ -56,9 +56,7 @@ function isInvalid(element, message) {
 function removeAlerts() {
   let alertBoxes = document.getElementsByClassName("form-alert");
   if(alertBoxes.length > 0) {
-    for(let alert in alertBoxes) {
-      remove(alert);
-    }
+    invalidAlert.innerHTML = "";
   }
 }
 // validate data in form
@@ -93,7 +91,7 @@ function emailValidation() {
 // validate birthdate
 function birthdateValidation() {
 // check format
-  let regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+  let regex = /^\d{2}\/\d{2}\/\d{4}$/;
   if (!regex.test(birthdate) || date == "") {
     return false;
   }
@@ -104,9 +102,9 @@ function birthdateValidation() {
       year = parseInt(parts[2], 10);
 // check the range of year and month
   let date =  new Date().getFullYear();
-  if(year < 1000 || year > date || month == 0 || month > 12) {
+  if(year < 1900 || year > date || month == 0 || month > 12) {
     return false;
-  }
+  } else 
 // set the leap years case
   var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -119,7 +117,7 @@ function birthdateValidation() {
 // validate quantity
 function quantityValidation() {
   let inputValue = document.getElementById("quantity");
-  if(inputValue.type != "number" && inputValue >= 0) {
+  if(inputValue.value >= 0 && inputValue.type == "number") {
     return true;
   } else {
     return false;
@@ -153,7 +151,7 @@ form.addEventListener("submit", event => {
   event.preventDefault();
 })
 
-function validation(event) {
+function validation() {
   //event.preventDefault();
   let isValid = true;
   removeAlerts();
