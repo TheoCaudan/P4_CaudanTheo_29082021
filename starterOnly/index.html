@@ -57,8 +57,9 @@
           <div class="modal-body">
             <form
               name="reserve"
+              id="reserve"
               action="index.html"
-              method="get"
+              method="POST"
             >
               <div
                 class="formData">
@@ -79,6 +80,7 @@
                   type="text" required
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br>
               </div>
               <div
@@ -207,11 +209,12 @@
                 <br>
               </div>
               <input
+                name="submit-btn"
                 class="btn-submit"
                 type="submit"
                 id="button"
                 value="C'est parti"
-                onclick="validation()"
+                onsubmit="validation()"
               />
             </form>
           </div>

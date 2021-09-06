@@ -33,7 +33,7 @@ const errorMessages = {
   firstName: "Veuillez renseigner un prénom comportant au moins 2 caractères.",
   lastName: "Veuillez renseigner un nom comportant au moins 2 caractères.",
   email: "Veuillez renseigner une adresse email valide.",
-  birthdate: "Veuillez renseigner une date de naissance au format JJ/MM/AAAA.",
+  birthdate: "Veuillez renseigner une date de naissance valide au format JJ/MM/AAAA.",
   quantity: "Veuillez renseigner un nombre de participation valide (supérieur ou égal à zéro).",
   locations: "Veuillez choisir une ville.",
   checkbox1: "Veuillez cocher la case \"J'ai lu et accepté les conditions d'utilisation.\"."
@@ -94,7 +94,7 @@ function birthdateValidation() {
   let regex = /^\d{2}\/\d{2}\/\d{4}$/;
   if (!regex.test(birthdate) || date == "") {
     return false;
-  }
+  } else
 // convert date parts to integers
   var parts = birthdate.split("/"),
       day = parseInt(parts[0], 10),
@@ -147,12 +147,7 @@ function checkbox1Validation() {
   }
 }
 // validate form
-form.addEventListener("submit", event => {
-  event.preventDefault();
-})
-
-function validation() {
-  //event.preventDefault();
+function validation(event) {
   let isValid = true;
   removeAlerts();
   if(firstValidation() != true) {
@@ -179,5 +174,7 @@ function validation() {
   } if(isValid == true) {
     form.submit();
     modalbg.style.display = "none";
+  } else {
+    event.preventDefault();
   }
 }
