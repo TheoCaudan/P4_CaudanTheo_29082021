@@ -174,6 +174,7 @@ function validation(event) {
   } if(isValid == true) {
     form.submit();
     modalbg.style.display = "none";
+    document.querySelector(".formConfirm").style.display = "block";
   } else {
     event.preventDefault();
   }
