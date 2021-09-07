@@ -148,6 +148,7 @@ function checkbox1Validation() {
 }
 // validate form
 function validation(event) {
+  event.preventDefault();
   let isValid = true;
   removeAlerts();
   if(firstValidation() != true) {
@@ -175,7 +176,5 @@ function validation(event) {
     form.submit();
     modalbg.style.display = "none";
     document.getElementById("formConfirm").style.display = "block";
-  } else {
-    event.preventDefault();
-  }
+  } 
 }
