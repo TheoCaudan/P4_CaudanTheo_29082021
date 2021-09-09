@@ -20,16 +20,13 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
-
 p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-
 img {
   padding-right: 1rem;
 }
-
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -51,29 +48,19 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
 .topnav .icon {
   display: none;
 }
-
-#formConfirm {
-  padding: 15px 8%;
-  margin: 15px auto;
-  /*display: none;*/
-}
-
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -81,7 +68,6 @@ img {
     display: block;
   }
 }
-
 @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
@@ -95,10 +81,7 @@ img {
     text-align: left;
   }
 }
-
-
-
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -106,7 +89,6 @@ img {
     margin-top: -15px;
   }
 } 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -117,10 +99,7 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
-
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -132,19 +111,15 @@ main {
   border-radius: 1rem;
   cursor: pointer;
 }
-
 .modal-btn:hover {
   background: #3876ac;
 }
-
 .footer {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
 }
-
 /* Modal form */
-
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -154,15 +129,12 @@ main {
   cursor: pointer;
   font-size: 16px;
 }
-
 .button:hover {
   background: #3876ac;
 }
-
 .smFont {
   font-size: 16px;
 }
-
 .bground {
   display: none;
   position: fixed;
@@ -174,7 +146,6 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
 .content {
   margin: 5% auto;
   width: 100%;
@@ -188,12 +159,10 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
-
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -232,11 +201,10 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
- 
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
 } 
 .checkbox-label,
 .checkbox2-label {
@@ -339,6 +307,33 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+#formConfirm {
+  /*display: none;*/
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4)
+}
+#formConfirmSpan {
+  inset: 41%;
+  width: 100%;
+  max-width: 523px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #ff0000;
+  padding: 10px;
+}
+.closeBtn {
+  align-self: center;
+}
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -346,14 +341,12 @@ input[data-error]::after {
   font-size: 1.1rem;
   font-weight: normal;
 }
-
 .custom-select select {
   display: none;
 }
 .select-selected {
   background-color: #fff;
 }
-
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
@@ -368,13 +361,11 @@ input[data-error]::after {
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
-
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
 }
-
 .select-items div,
 .select-selected {
   color: #000;
@@ -385,7 +376,6 @@ input[data-error]::after {
   border-radius: 8px;
   height: 48px;
 }
-
 /* Style items (options): */
 .select-items {
   position: absolute;
@@ -395,12 +385,10 @@ input[data-error]::after {
   right: 0;
   z-index: 99;
 }
-
 /* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
 }
-
 .select-items div:hover,
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
@@ -522,7 +510,6 @@ footer {
     text-align: center;
   }
 }
-
 @keyframes modalopen {
   from {
     opacity: 0;

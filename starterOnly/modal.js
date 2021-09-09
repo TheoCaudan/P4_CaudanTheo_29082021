@@ -10,7 +10,8 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const form = document.querySelector("form");
+const form = document.querySelector("#reserve");
+const confirm = document.querySelector("#formConfirm");
 const firstNameInput = document.getElementById("first"),
       lastNameInput = document.getElementById("last"),
       emailInput = document.getElementById("email"),
@@ -27,6 +28,10 @@ function launchModal() {
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+}
+// close confirm modal
+function closeConfirm() {
+  confirm.style.display = "none";
 }
 // errorMessages
 const errorMessages = {
@@ -147,10 +152,14 @@ function checkbox1Validation() {
   }
 }
 // validate form
+form.addEventListener("submit", event => {
+  event.preventDefault();
+})
+
 function validation(event) {
   event.preventDefault();
-  let isValid = true;
   removeAlerts();
+  let isValid = true;
   if(firstValidation() != true) {
     isValid = false;
     isInvalid(firstNameInput, errorMessages.firstName);
@@ -174,7 +183,6 @@ function validation(event) {
     isInvalid(checkbox1Input, errorMessages.checkbox1);
   } if(isValid == true) {
     form.submit();
-    modalbg.style.display = "none";
     document.getElementById("formConfirm").style.display = "block";
   } 
 }
