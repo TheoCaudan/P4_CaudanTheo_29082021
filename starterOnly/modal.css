@@ -201,7 +201,9 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-.error {
+.error, .firstIsNotValid, .lastIsNotValid, .emailIsNotValid, 
+.birthdateIsNotValid, .quantityIsNotValid, .locationsIsNotValid,
+.checkbox1IsNotValid {
   color: #ff0000;
   display: block;
 }

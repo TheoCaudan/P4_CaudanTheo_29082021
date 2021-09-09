@@ -12,6 +12,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("#reserve");
 const confirm = document.querySelector("#formConfirm");
+const confirmBtn = document.getElementById("button");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
@@ -23,7 +24,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 // launch confirm modal event
-confirm.forEach((btn) => btn.addEventListener("click", launchConfirm));
+confirmBtn.addEventListener("click", launchConfirm);
 // launch confirm modal form
 function launchConfirm() {
   confirm.style.display = "block";
@@ -51,7 +52,7 @@ function firstValidation(e) {
     firstError.textContent = "Format incorrect. (Au moins 2 lettres, pas de chiffres ni caractères spéciaux attendus)";
     firstError.style.color = "#ff0000";
   } else {
-    firstError.textContent = "";
+    //firstError.textContent = "";
   }
 }
 // lastname validation
@@ -70,7 +71,7 @@ function lastValidation(e) {
     lastError.textContent = "Format incorrect. (Au moins 2 lettres, pas de chiffres ni caractères spéciaux attendus)";
     lastError.style.color = "#ff0000";
   } else {
-    lastError.textContent = "";
+    //lastError.textContent = "";
   }
 }
 // email validation
@@ -89,14 +90,14 @@ function emailValidation(e) {
     emailError.textContent = "Format incorrect. (L'adresse doit contenir au moins un signe @ et un . ex: prenom.nom123@boitemail.fr)"
     emailError.style.color = "#ff0000";
   } else {
-    emailError.textContent = "";
+    //emailError.textContent = "";
   }
 }
 // birthdate validation
 var birthdateInput = document.getElementById("birthdate");
 var birthdateError = document.getElementById("birthdateIsNotValid");
-var birthdateValidity = /^\d{2}\/\d{2}\/\d{4}$/;
-var parts = birthdate.split("/"),
+var birthdateValidity = /^\d{2}\/\d{2}\/\d{4}$/m;
+var parts = birthdateInput.value.split("/"),
     day = parseInt(parts[0], 10),
     month = parseInt(parts[1], 10),
     year = parseInt(parts[2], 10);
@@ -114,7 +115,7 @@ function birthdateValidation(e) {
     birthdateError.style.color = "#ff0000";
   } else if(birthdateValidity.test(birthdateInput.value) == false) {
     e.preventDefault();
-    birthdateError.textContent = "Format incorrect. (La date doit être au format JJ/MM/AAAA";
+    birthdateError.textContent = "Format incorrect. (La date doit être au format JJ/MM/AAAA)";
     birthdateError.style.color = "#ff0000";
   } else if(year < 1900 || year > date || month == 0 || month > 12) {
     e.preventDefault();
@@ -125,7 +126,7 @@ function birthdateValidation(e) {
     birthdateError.textContent = "Veuillez renseigner une date de naissance valide."
     birthdateError.style.color = "#ff0000";
   } else {
-    birthdateError.textContent = "";
+    //birthdateError.textContent = "";
   }
 }
 // quantity validation
@@ -147,7 +148,7 @@ function quantityValidation(e) {
     quantityError.textContent = "Veuillez entrer une valeur numérique.";
     quantityError.style.color = "#ff0000";
   } else {
-    quantityError.textContent = "";
+    //quantityError.textContent = "";
   }
 }
 // locations validation
@@ -166,20 +167,20 @@ function locationsValidation(e) {
     locationsError.textContent = "Veuillez cocher une ville.";
     locationsError.style.color = "#ff0000";
   } else {
-    locationsError.textContent = "";
+    //locationsError.textContent = "";
   }
 }
 // checkbox1 validation
-var checkbox1Input = document.getElementById("checkbox1").checked;
+var checkbox1Input = document.getElementById("checkbox1");
 var checkbox1Error = document.getElementById("checkbox1IsNotValid");
 validation.addEventListener("click", checkbox1Validation);
 
 function checkbox1Validation(e) {
-  if(!checkbox1Input) {
+  if(!checkbox1Input.checked) {
     e.preventDefault();
     checkbox1Error.textContent = "Veuillez accepter les conditions d'utilisation.";
     checkbox1Error.style.color = "#ff0000";
   } else {
-    checkbox1Error.textContent = "";
+    //checkbox1Error.textContent = "";
   }
 }
