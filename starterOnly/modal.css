@@ -201,6 +201,10 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+.error {
+  color: #ff0000;
+  display: block;
+}
 input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -308,7 +312,7 @@ input[data-error]::after {
   border: 0;
 }
 #formConfirm {
-  /*display: none;*/
+  display: none;
   position: absolute;
   z-index: 1;
   left: 0px;

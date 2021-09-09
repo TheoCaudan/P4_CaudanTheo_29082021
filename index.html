@@ -76,6 +76,7 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <span class="firstIsNotValid error"></span><br>
               </div>
               <div
                 class="formData">
@@ -87,6 +88,7 @@
                   name="last"
                   minlength="2"
                 /><br>
+                <span class="lastIsNotValid error"></span><br>
               </div>
               <div
                 class="formData">
@@ -97,6 +99,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span class="emailIsNotValid error"></span><br>
               </div>
               <div
                 class="formData">
@@ -107,6 +110,7 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span class="birthdateIsNotValid error"></span><br>
               </div>
               <div
                 class="formData">
@@ -119,6 +123,7 @@
                   min="0" 
                   max="99"
                   />
+                  <span class="quantityIsNotValid error"></span><br>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -189,6 +194,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span class="locationsIsNotValid error"></span><br>
               </div>
               <div
                 class="formData">
@@ -202,9 +208,10 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span class="checkbox1IsNotValid error"></span><br>
                 <input 
                   class="checkbox-input" 
-                  type="checkbox" disabled
+                  type="checkbox"
                   id="checkbox2" 
                 />
                 <label class="checkbox2-label" for="checkbox2">
