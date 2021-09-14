@@ -71,10 +71,9 @@
                 <label>Prénom</label><br>
                 <input
                   class="text-control"
-                  type="text" required
+                  type="text" 
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
                 <span class="firstIsNotValid error"></span><br>
               </div>
@@ -83,10 +82,9 @@
                 <label>Nom</label><br>
                 <input
                   class="text-control"
-                  type="text" required
+                  type="text" 
                   id="last"
                   name="last"
-                  minlength="2"
                 /><br>
                 <span class="lastIsNotValid error"></span><br>
               </div>
@@ -95,7 +93,7 @@
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email" required
+                  type="email" 
                   id="email"
                   name="email"
                 /><br>
@@ -106,7 +104,7 @@
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
-                  type="date" required
+                  type="date" 
                   id="birthdate"
                   name="birthdate"
                 /><br>
@@ -116,7 +114,7 @@
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input 
-                  type="number" required
+                  type="number" 
                   class="text-control" 
                   id="quantity" 
                   name="quantity" 
@@ -226,7 +224,7 @@
                 type="submit"
                 id="button"
                 value="C'est parti"
-                onsubmit="validation(e)"
+                onsubmit="formSubmission()"
               />
               <br>
               <span class="formIsNotValid error"></span>
