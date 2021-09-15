@@ -24,12 +24,10 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 // launch confirm modal event
-confirmBtn.addEventListener("click", launchConfirm);
+confirmBtn.addEventListener("submit", launchConfirm);
 // launch confirm modal form
 function launchConfirm() {
-  {
-    confirm.style.display = "block";
-  }
+  confirm.style.display = "block";
 }
 // close confirm modal form
 function closeConfirm() {
@@ -42,10 +40,10 @@ var validation = document.getElementById("button");
 var firstNameInput = document.getElementById("first");
 var firstError = document.querySelector(".firstIsNotValid");
 var firstValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
-validation.addEventListener("click", firstValidation);
+firstNameInput.addEventListener("change", firstValidation);
 
 function firstValidation() {
-  if(firstNameInput.validity.valueMissing) {
+  if(firstNameInput == "") {
     firstError.textContent = "Veuillez renseigner un prénom comportant au moins 2 caractères.";
     firstError.style.color = "#ff0000";
     return false;
@@ -62,10 +60,10 @@ function firstValidation() {
 var lastNameInput = document.getElementById("last");
 var lastError = document.querySelector(".lastIsNotValid");
 var lastValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
-validation.addEventListener("click", lastValidation);
+lastNameInput.addEventListener("change", lastValidation);
 
 function lastValidation() {
-  if(lastNameInput.validity.valueMissing) {
+  if(lastNameInput == "") {
     lastError.textContent = "Veuillez renseigner un nom comportant au moins 2 caractères.";
     lastError.style.color = "#ff0000";
     return false;
@@ -82,10 +80,10 @@ function lastValidation() {
 var emailInput = document.getElementById("email");
 var emailError = document.querySelector(".emailIsNotValid");
 var emailValidity = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-validation.addEventListener("click", emailValidation);
+emailInput.addEventListener("change", emailValidation);
 
 function emailValidation() {
-  if(emailInput.validity.valueMissing) {
+  if(emailInput == "") {
     emailError.textContent = "Veuillez renseigner une adresse email.";
     emailError.style.color = "#ff0000";
     return false;
@@ -102,10 +100,15 @@ function emailValidation() {
 var birthdateInput = document.getElementById("birthdate");
 var birthdateError = document.querySelector(".birthdateIsNotValid");
 let date = new Date().getFullYear();
-validation.addEventListener("click", birthdateValidation);
+birthdateInput.addEventListener("change", birthdateValidation);
 
 function birthdateValidation() {
-  if(birthdateInput.getFullYear() < 1900 || birthdateInput.getFullYear() > date ) {
+  let dateTest = parseInt(birthdateInput.value);
+  if(birthdateInput == ""){
+    birthdateError.textContent = "Veuillez renseigner une date de naissance.";
+    birthdateError.style.color = "#ff0000";
+  }
+  if(dateTest < 1900 || dateTest > date) {
     birthdateError.textContent = "Veuillez renseigner une date de naissance valide.";
     birthdateError.style.color = "#ff0000";
     return false;
@@ -117,10 +120,10 @@ function birthdateValidation() {
 // quantity validation
 var quantityInput = document.getElementById("quantity");
 var quantityError = document.querySelector(".quantityIsNotValid");
-validation.addEventListener("click", quantityValidation);
+quantityInput.addEventListener("change", quantityValidation);
 
 function quantityValidation() {
-  if(quantityInput.validity.valueMissing) {
+  if(quantityInput == "") {
     quantityError.textContent = "Veuillez renseigner un nombre de participation.";
     quantityError.style.color = "#ff0000";
     return false;
@@ -144,8 +147,9 @@ var locationsInput3 = document.getElementById("location3");
 var locationsInput4 = document.getElementById("location4");
 var locationsInput5 = document.getElementById("location5");
 var locationsInput6 = document.getElementById("location6");
+var locationsInputAll = document.querySelectorAll(".checkbox-input[type=radio]");
 var locationsError = document.querySelector(".locationsIsNotValid");
-validation.addEventListener("click", locationsValidation);
+validation.addEventListener("change", locationsValidation);
 
 function locationsValidation() {
   if(!locationsInput1.checked && !locationsInput2.checked && !locationsInput3.checked && !locationsInput4.checked && !locationsInput5.checked && !locationsInput6.checked && quantityInput.value != 0 ) {
@@ -160,7 +164,7 @@ function locationsValidation() {
 // checkbox1 validation
 var checkbox1Input = document.getElementById("checkbox1");
 var checkbox1Error = document.querySelector(".checkbox1IsNotValid");
-validation.addEventListener("click", checkbox1Validation);
+checkbox1Input.addEventListener("change", checkbox1Validation);
 
 function checkbox1Validation() {
   if(!checkbox1Input.checked) {
@@ -178,12 +182,7 @@ validation.addEventListener("submit", formSubmission);
 
 function formSubmission(e) {
   e.preventDefault();
-  if(!firstValidation() && !lastValidation() && !emailValidation() && !birthdateValidation() && !quantityValidation() && !locationsValidation() && !checkbox1Validation()) {
-    return false;
-  } else {
-    closeModal();
-    return true;
-  }
+  if(firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationsValidation() && checkbox1Validation()) {
+    console.log("Formulaire envoyé.");
+  } 
 }
-
-// reset errors done in the validation functions
