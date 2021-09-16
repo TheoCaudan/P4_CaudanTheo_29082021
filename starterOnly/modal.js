@@ -152,7 +152,7 @@ var locationsError = document.querySelector(".locationsIsNotValid");
 validation.addEventListener("change", locationsValidation);
 
 function locationsValidation() {
-  if(!locationsInput1.checked && !locationsInput2.checked && !locationsInput3.checked && !locationsInput4.checked && !locationsInput5.checked && !locationsInput6.checked && quantityInput.value != 0 ) {
+  if(!locationsInput1.checked && !locationsInput2.checked && !locationsInput3.checked && !locationsInput4.checked && !locationsInput5.checked && !locationsInput6.checked) {
     locationsError.textContent = "Veuillez cocher une ville.";
     locationsError.style.color = "#ff0000";
     return false;
@@ -184,5 +184,6 @@ function formSubmission(e) {
   e.preventDefault();
   if(firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationsValidation() && checkbox1Validation()) {
     console.log("Formulaire envoyé.");
+    form.submit();
   } 
 }
