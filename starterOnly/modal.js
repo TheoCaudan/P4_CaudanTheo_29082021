@@ -12,7 +12,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("#reserve");
 const confirm = document.querySelector("#formConfirm");
-const confirmBtn = document.getElementById("button");
+/* const confirmBtn = document.getElementById("reserve"); */
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
@@ -24,7 +24,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 // launch confirm modal event
-confirmBtn.addEventListener("submit", launchConfirm);
+form.addEventListener("submit", launchConfirm);
 // launch confirm modal form
 function launchConfirm() {
   confirm.style.display = "block";
@@ -36,7 +36,7 @@ function closeConfirm() {
 // form validation 
 // ================================================//
 // firstname validation
-var validation = document.getElementById("button");
+var validation = document.getElementById("submitBtn");
 var firstNameInput = document.getElementById("first");
 var firstError = document.querySelector(".firstIsNotValid");
 var firstValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
@@ -149,7 +149,8 @@ var locationsInput5 = document.getElementById("location5");
 var locationsInput6 = document.getElementById("location6");
 var locationsInputAll = document.querySelectorAll(".checkbox-input[type=radio]");
 var locationsError = document.querySelector(".locationsIsNotValid");
-validation.addEventListener("change", locationsValidation);
+var towns = document.getElementById("towns");
+towns.addEventListener("change", locationsValidation);
 
 function locationsValidation() {
   if(!locationsInput1.checked && !locationsInput2.checked && !locationsInput3.checked && !locationsInput4.checked && !locationsInput5.checked && !locationsInput6.checked) {
@@ -178,12 +179,12 @@ function checkbox1Validation() {
 }
 // form submission
 var formError = document.querySelector(".formIsNotValid");
-validation.addEventListener("submit", formSubmission);
+form.addEventListener("submit", formSubmission);
 
 function formSubmission(e) {
   e.preventDefault();
   if(firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationsValidation() && checkbox1Validation()) {
     console.log("Formulaire envoyé.");
-    form.submit();
+    closeModal();
   } 
 }
