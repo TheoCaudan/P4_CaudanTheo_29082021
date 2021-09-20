@@ -111,7 +111,7 @@ main {
   padding-top: 0.5vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
+  margin-left: 15px;
   border-radius: 2rem;
   text-align: justify;
 }
@@ -510,12 +510,11 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 3.8rem;
+    font-size: 4rem;
     white-space: normal;
-    width: 100%;
   }
   .hero-text {
-    width: 100%;
+    width: unset;
     font-size: 1rem;
   }
   .hero-img img {
