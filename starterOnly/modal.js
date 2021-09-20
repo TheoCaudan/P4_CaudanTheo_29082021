@@ -23,8 +23,6 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
-// launch confirm modal event
-form.addEventListener("submit", launchConfirm);
 // launch confirm modal form
 function launchConfirm() {
   confirm.style.display = "block";
@@ -104,9 +102,10 @@ birthdateInput.addEventListener("change", birthdateValidation);
 
 function birthdateValidation() {
   let dateTest = parseInt(birthdateInput.value);
-  if(birthdateInput == ""){
+  if(isNaN(dateTest)){
     birthdateError.textContent = "Veuillez renseigner une date de naissance.";
     birthdateError.style.color = "#ff0000";
+    return false;
   }
   if(dateTest < 1900 || dateTest > date) {
     birthdateError.textContent = "Veuillez renseigner une date de naissance valide.";
@@ -123,16 +122,13 @@ var quantityError = document.querySelector(".quantityIsNotValid");
 quantityInput.addEventListener("change", quantityValidation);
 
 function quantityValidation() {
-  if(quantityInput == "") {
+  let quantityTest = parseInt(quantityInput.value);
+  if(isNaN(quantityTest)) {
     quantityError.textContent = "Veuillez renseigner un nombre de participation.";
     quantityError.style.color = "#ff0000";
     return false;
-  } else if(quantityInput.value < 0 || quantityInput.value >= 100) {
+  } else if(quantityTest < 0 || quantityTest >= 100) {
     quantityError.textContent = "Veuillez renseigner un nombre de participation compris entre 0 et 99 inclus.";
-    quantityError.style.color = "#ff0000";
-    return false;
-  } else if(quantityInput.type != "number") {
-    quantityError.textContent = "Veuillez entrer une valeur numérique.";
     quantityError.style.color = "#ff0000";
     return false;
   } else {
@@ -185,6 +181,7 @@ function formSubmission(e) {
   e.preventDefault();
   if(firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationsValidation() && checkbox1Validation()) {
     console.log("Formulaire envoyé.");
+    launchConfirm();
     closeModal();
   } 
 }
