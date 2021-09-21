@@ -52,13 +52,15 @@ var firstValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖù�
 firstNameInput.addEventListener("change", firstValidation);
 
 function firstValidation() {
-  if(firstNameInput == "") {
+  if(firstNameInput == "" || firstNameInput.length < 2) {
     firstError.textContent = "Veuillez renseigner un prénom comportant au moins 2 caractères.";
     firstError.style.color = "#ff0000";
+    firstError.style.fontSize = "18px";
     return false;
   } else if(firstValidity.test(firstNameInput.value) == false) {
-    firstError.textContent = "Format incorrect. (Au moins 2 lettres, pas de chiffres ni caractères spéciaux attendus)";
+    firstError.textContent = "Veuillez renseigner un prénom valide.";
     firstError.style.color = "#ff0000";
+    firstError.style.fontSize = "18px";
     return false;
   } else {
     firstError.textContent = ""; // reset error
@@ -72,13 +74,15 @@ var lastValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ
 lastNameInput.addEventListener("change", lastValidation);
 
 function lastValidation() {
-  if(lastNameInput == "") {
+  if(lastNameInput == "" || lastNameInput.length < 2) {
     lastError.textContent = "Veuillez renseigner un nom comportant au moins 2 caractères.";
     lastError.style.color = "#ff0000";
+    lastError.style.fontSize = "18px";
     return false;
   } else if(lastValidity.test(lastNameInput.value) == false) {
-    lastError.textContent = "Format incorrect. (Au moins 2 lettres, pas de chiffres ni caractères spéciaux attendus)";
+    lastError.textContent = "Veuillez renseigner un nom valide.";
     lastError.style.color = "#ff0000";
+    lastError.style.fontSize = "18px";
     return false;
   } else {
     lastError.textContent = ""; // reset error
@@ -95,10 +99,12 @@ function emailValidation() {
   if(emailInput == "") {
     emailError.textContent = "Veuillez renseigner une adresse email.";
     emailError.style.color = "#ff0000";
+    emailError.style.fontSize = "18px";
     return false;
   } else if(emailValidity.test(emailInput.value) == false) {
-    emailError.textContent = "Format incorrect. (L'adresse doit contenir au moins un signe @ et un . ex: prenom.nom123@boitemail.fr)"
+    emailError.textContent = "L'adresse est invalide. Format attendu: xxx@xxx.xx"
     emailError.style.color = "#ff0000";
+    emailError.style.fontSize = "18px";
     return false;
   } else {
     emailError.textContent = ""; // reset error
@@ -116,11 +122,13 @@ function birthdateValidation() {
   if(isNaN(dateTest)){
     birthdateError.textContent = "Veuillez renseigner une date de naissance.";
     birthdateError.style.color = "#ff0000";
+    birthdateError.style.fontSize = "18px";
     return false;
   }
   if(dateTest < 1900 || dateTest > date) {
     birthdateError.textContent = "Veuillez renseigner une date de naissance valide.";
     birthdateError.style.color = "#ff0000";
+    birthdateError.style.fontSize = "18px";
     return false;
   } else {
     birthdateError.textContent = ""; // reset error
@@ -137,10 +145,12 @@ function quantityValidation() {
   if(isNaN(quantityTest)) {
     quantityError.textContent = "Veuillez renseigner un nombre de participation.";
     quantityError.style.color = "#ff0000";
+    quantityError.style.fontSize = "18px";
     return false;
   } else if(quantityTest < 0 || quantityTest >= 100) {
-    quantityError.textContent = "Veuillez renseigner un nombre de participation compris entre 0 et 99 inclus.";
+    quantityError.textContent = "Valeur attendue comprise entre 0 et 99 inclus.";
     quantityError.style.color = "#ff0000";
+    quantityError.style.fontSize = "18px";
     return false;
   } else {
     quantityError.textContent = ""; // reset error
@@ -163,6 +173,7 @@ function locationsValidation() {
   if(!locationsInput1.checked && !locationsInput2.checked && !locationsInput3.checked && !locationsInput4.checked && !locationsInput5.checked && !locationsInput6.checked) {
     locationsError.textContent = "Veuillez cocher une ville.";
     locationsError.style.color = "#ff0000";
+    locationsError.style.fontSize = "18px";
     return false;
   } else {
     locationsError.textContent = ""; // reset error
@@ -178,6 +189,7 @@ function checkbox1Validation() {
   if(!checkbox1Input.checked) {
     checkbox1Error.textContent = "Veuillez accepter les conditions d'utilisation.";
     checkbox1Error.style.color = "#ff0000";
+    checkbox1Error.style.fontSize = "18px";
     return false;
   } else {
     checkbox1Error.textContent = ""; // reset error
