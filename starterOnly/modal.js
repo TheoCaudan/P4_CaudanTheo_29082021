@@ -118,14 +118,21 @@ let date = new Date().getFullYear();
 birthdateInput.addEventListener("change", birthdateValidation);
 
 function birthdateValidation() {
-  let dateTest = parseInt(birthdateInput.value);
-  if(isNaN(dateTest)){
-    birthdateError.textContent = "Veuillez renseigner une date de naissance.";
+  var parts = birthdateInput.value.split("\-"),
+    day = parseInt(parts[2], 10),
+    month = parseInt(parts[1], 10),
+    year = parseInt(parts[0], 10);
+  var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if((year % 100 != 0 && year % 4 == 0) || (year % 100 == 0 && year % 400 == 0)) {
+  monthLength[1] = 29;
+  }
+  if(isNaN(day) || isNaN(month) || isNaN(year)){
+    birthdateError.textContent = "Veuillez renseigner une date de naissance valide.";
     birthdateError.style.color = "#ff0000";
     birthdateError.style.fontSize = "18px";
     return false;
   }
-  if(dateTest < 1900 || dateTest > date) {
+  if(year < 1900 || year > date || day <= 0 || day > monthLength[month - 1] || month <= 0 || month > 12){
     birthdateError.textContent = "Veuillez renseigner une date de naissance valide.";
     birthdateError.style.color = "#ff0000";
     birthdateError.style.fontSize = "18px";
