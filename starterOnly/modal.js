@@ -12,12 +12,23 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("#reserve");
 const confirm = document.querySelector("#formConfirm");
-/* const confirmBtn = document.getElementById("reserve"); */
+
+// variable to submit only once
+let formSent = false;
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => btn.addEventListener("click", launch));
+// function launch
+function launch() {
+  launchModal();
+  if(formSent) {
+    launchConfirm();
+  }
+}
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  if(!formSent) {
+    modalbg.style.display = "block";
+  } 
 }
 // close modal form
 function closeModal() {
@@ -25,7 +36,7 @@ function closeModal() {
 }
 // launch confirm modal form
 function launchConfirm() {
-  confirm.style.display = "block";
+    confirm.style.display = "block";
 }
 // close confirm modal form
 function closeConfirm() {
@@ -175,13 +186,16 @@ function checkbox1Validation() {
 }
 // form submission
 var formError = document.querySelector(".formIsNotValid");
-form.addEventListener("submit", formSubmission);
+form.addEventListener("submit", formSubmission); 
+
+
 
 function formSubmission(e) {
   e.preventDefault();
-  if(firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationsValidation() && checkbox1Validation()) {
+  if(firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationsValidation() && checkbox1Validation() && !formSent) {
     console.log("Formulaire envoyé.");
+    formSent = true;
     launchConfirm();
     closeModal();
-  } 
+  }
 }
