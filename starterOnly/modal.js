@@ -58,7 +58,7 @@ function firstValidation() {
     firstError.style.fontSize = "18px";
     return false;
   } else if(firstValidity.test(firstNameInput.value) == false) {
-    firstError.textContent = "Veuillez renseigner un prénom valide.";
+    firstError.textContent = "Veuillez renseigner un prénom valide. Minimum 2 caractères.";
     firstError.style.color = "#ff0000";
     firstError.style.fontSize = "18px";
     return false;
@@ -80,7 +80,7 @@ function lastValidation() {
     lastError.style.fontSize = "18px";
     return false;
   } else if(lastValidity.test(lastNameInput.value) == false) {
-    lastError.textContent = "Veuillez renseigner un nom valide.";
+    lastError.textContent = "Veuillez renseigner un nom valide. Minimum 2 caractères.";
     lastError.style.color = "#ff0000";
     lastError.style.fontSize = "18px";
     return false;
