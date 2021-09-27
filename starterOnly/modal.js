@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += "responsive";
   } else {
@@ -45,10 +45,10 @@ function closeConfirm() {
 // form validation 
 // ================================================//
 // firstname validation
-var validation = document.getElementById("submitBtn");
-var firstNameInput = document.getElementById("first");
-var firstError = document.querySelector(".firstIsNotValid");
-var firstValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
+let validation = document.getElementById("submitBtn");
+let firstNameInput = document.getElementById("first");
+let firstError = document.querySelector(".firstIsNotValid");
+let firstValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
 firstNameInput.addEventListener("change", firstValidation);
 
 function firstValidation() {
@@ -68,9 +68,9 @@ function firstValidation() {
   }
 }
 // lastname validation
-var lastNameInput = document.getElementById("last");
-var lastError = document.querySelector(".lastIsNotValid");
-var lastValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
+let lastNameInput = document.getElementById("last");
+let lastError = document.querySelector(".lastIsNotValid");
+let lastValidity = /^[a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+([-'\s][a-zA-ZéëêèÉîïìíüûúÜâäàåáÅôöòóÖùÿ][a-zéëêèîïìíüûúâäàåáôöòóùÿ]+)?/;
 lastNameInput.addEventListener("change", lastValidation);
 
 function lastValidation() {
@@ -90,9 +90,9 @@ function lastValidation() {
   }
 }
 // email validation
-var emailInput = document.getElementById("email");
-var emailError = document.querySelector(".emailIsNotValid");
-var emailValidity = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let emailInput = document.getElementById("email");
+let emailError = document.querySelector(".emailIsNotValid");
+let emailValidity = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 emailInput.addEventListener("change", emailValidation);
 
 function emailValidation() {
@@ -112,17 +112,17 @@ function emailValidation() {
   }
 }
 // birthdate validation
-var birthdateInput = document.getElementById("birthdate");
-var birthdateError = document.querySelector(".birthdateIsNotValid");
+let birthdateInput = document.getElementById("birthdate");
+let birthdateError = document.querySelector(".birthdateIsNotValid");
 let date = new Date().getFullYear();
 birthdateInput.addEventListener("change", birthdateValidation);
 
 function birthdateValidation() {
-  var parts = birthdateInput.value.split("\-"),
+  let parts = birthdateInput.value.split("\-"),
     day = parseInt(parts[2], 10),
     month = parseInt(parts[1], 10),
     year = parseInt(parts[0], 10);
-  var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  let monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   if((year % 100 != 0 && year % 4 == 0) || (year % 100 == 0 && year % 400 == 0)) {
   monthLength[1] = 29;
   }
@@ -143,8 +143,8 @@ function birthdateValidation() {
   }
 }
 // quantity validation
-var quantityInput = document.getElementById("quantity");
-var quantityError = document.querySelector(".quantityIsNotValid");
+let quantityInput = document.getElementById("quantity");
+let quantityError = document.querySelector(".quantityIsNotValid");
 quantityInput.addEventListener("change", quantityValidation);
 
 function quantityValidation() {
@@ -165,15 +165,15 @@ function quantityValidation() {
   }
 }
 // locations validation
-var locationsInput1 = document.getElementById("location1");
-var locationsInput2 = document.getElementById("location2");
-var locationsInput3 = document.getElementById("location3");
-var locationsInput4 = document.getElementById("location4");
-var locationsInput5 = document.getElementById("location5");
-var locationsInput6 = document.getElementById("location6");
-var locationsInputAll = document.querySelectorAll(".checkbox-input[type=radio]");
-var locationsError = document.querySelector(".locationsIsNotValid");
-var towns = document.getElementById("towns");
+let locationsInput1 = document.getElementById("location1");
+let locationsInput2 = document.getElementById("location2");
+let locationsInput3 = document.getElementById("location3");
+let locationsInput4 = document.getElementById("location4");
+let locationsInput5 = document.getElementById("location5");
+let locationsInput6 = document.getElementById("location6");
+let locationsInputAll = document.querySelectorAll(".checkbox-input[type=radio]");
+let locationsError = document.querySelector(".locationsIsNotValid");
+let towns = document.getElementById("towns");
 towns.addEventListener("change", locationsValidation);
 
 function locationsValidation() {
@@ -188,8 +188,8 @@ function locationsValidation() {
   }
 }
 // checkbox1 validation
-var checkbox1Input = document.getElementById("checkbox1");
-var checkbox1Error = document.querySelector(".checkbox1IsNotValid");
+let checkbox1Input = document.getElementById("checkbox1");
+let checkbox1Error = document.querySelector(".checkbox1IsNotValid");
 checkbox1Input.addEventListener("change", checkbox1Validation);
 
 function checkbox1Validation() {
@@ -204,7 +204,7 @@ function checkbox1Validation() {
   }
 }
 // form submission
-var formError = document.querySelector(".formIsNotValid");
+let formError = document.querySelector(".formIsNotValid");
 form.addEventListener("submit", formSubmission); 
 
 
